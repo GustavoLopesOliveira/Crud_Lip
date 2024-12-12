@@ -19,13 +19,17 @@ bool clienteExiste(const vector<Cliente>& clientes, int codigo) {
 // Carrega os clientes a partir de um arquivo binário
 void carregarClientes(vector<Cliente>& clientes) {
     ifstream infile("clientes.bin", ios::binary);
-    if (infile.is_open()) {
-        Cliente cliente;
-        while (infile.read(reinterpret_cast<char*>(&cliente), sizeof(Cliente))) {
-            clientes.push_back(cliente);
-        }
-        infile.close();
+    if (!infile) {
+        cerr << "Erro ao abrir o arquivo de clientes." << endl;
+        return;
     }
+
+    Cliente cliente;
+    while (infile.read(reinterpret_cast<char*>(&cliente), sizeof(Cliente))) {
+        clientes.push_back(cliente);
+    }
+
+    infile.close();
 }
 
 // Salva os clientes em um arquivo binário

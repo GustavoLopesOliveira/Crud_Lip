@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-o",
+                "programa.exe",
+                "main.cpp",
+                "cliente.cpp",
+                "estadia.cpp",
+                "funcionario.cpp",
+                "quarto.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compilação do projeto HotelHabboo"
+        }
+    ]
+}

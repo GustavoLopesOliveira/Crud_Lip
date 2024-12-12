@@ -23,7 +23,7 @@ void carregarDados() {
 int main() {
     carregarDados();
     int opcao;
-    
+
     do {
         cout << "1 - Cadastrar Estadia" << endl;
         cout << "2 - Baixa Estadia" << endl;
@@ -37,7 +37,8 @@ int main() {
         cout << "0 - Sair" << endl;
         cout << "Digite a opção desejada: ";
         cin >> opcao;
-        switch(opcao) {
+
+        switch (opcao) {
             case 1:
                 cadastrarEstadia(estadias, clientes, funcionarios, quartos);
                 break;
@@ -45,13 +46,13 @@ int main() {
                 baixaEstadia(estadias);
                 break;
             case 3:
-                cout << "Valor mensal de estadia: " << valorMesEstadia(estadias) << endl;
+                cout << "Valor mensal das estadias: " << valorMesEstadia(estadias) << endl;
                 break;
             case 4:
                 cadastrarFuncionario(funcionarios);
                 break;
             case 5:
-                pesquisaFuncionario(funcionarios);
+                // Implementar pesquisaFuncionario
                 break;
             case 6:
                 cadastrarCliente(clientes);
@@ -70,7 +71,9 @@ int main() {
                 break;
             default:
                 cout << "Opção inválida!" << endl;
+                break;
         }
-    } while(opcao != 0);
+    } while (opcao != 0);
+
     return 0;
 }
