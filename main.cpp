@@ -12,7 +12,7 @@ vector<Funcionario> funcionarios;
 vector<Quarto> quartos;
 vector<Estadia> estadias;
 
-// Carrega todos os dados necessarios
+// Carrega todos os dados necessários
 void carregarDados() {
     carregarClientes(clientes);
     carregarFuncionarios(funcionarios);
@@ -35,7 +35,7 @@ int main() {
         cout << "8 - Estadias do Cliente" << endl;
         cout << "9 - Cadastrar Quarto" << endl;
         cout << "0 - Sair" << endl;
-        cout << "Digite a opcao desejada: ";
+        cout << "Digite a opção desejada: ";
         cin >> opcao;
         switch(opcao) {
             case 1:
@@ -69,7 +69,7 @@ int main() {
                 cout << "Saindo..." << endl;
                 break;
             default:
-                cout << "Opcao invalida!" << endl;
+                cout << "Opção inválida!" << endl;
         }
     } while(opcao != 0);
     return 0;

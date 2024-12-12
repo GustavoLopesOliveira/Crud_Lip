@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Verifica se um quarto com o numero especificado ja existe
+// Verifica se um quarto com o número especificado já existe
 bool quartoExiste(const vector<Quarto>& quartos, int numero) {
     for (const auto& quarto : quartos) {
         if (quarto.numeroQuarto == numero) {
@@ -16,7 +16,7 @@ bool quartoExiste(const vector<Quarto>& quartos, int numero) {
     return false;
 }
 
-// Carrega os quartos a partir de um arquivo binario
+// Carrega os quartos a partir de um arquivo binário
 void carregarQuartos(vector<Quarto>& quartos) {
     ifstream infile("quartos.bin", ios::binary);
     if (infile.is_open()) {
@@ -28,7 +28,7 @@ void carregarQuartos(vector<Quarto>& quartos) {
     }
 }
 
-// Salva os quartos em um arquivo binario
+// Salva os quartos em um arquivo binário
 void salvarQuartos(const vector<Quarto>& quartos) {
     ofstream outfile("quartos.bin", ios::binary | ios::trunc);
     if (outfile.is_open()) {
@@ -42,15 +42,15 @@ void salvarQuartos(const vector<Quarto>& quartos) {
 // Cadastra um novo quarto
 void cadastrarQuarto(vector<Quarto>& quartos) {
     Quarto novoQuarto;
-    cout << "Digite o numero do quarto: ";
+    cout << "Digite o número do quarto: ";
     cin >> novoQuarto.numeroQuarto;
     if (quartoExiste(quartos, novoQuarto.numeroQuarto)) {
-        cout << "Erro: Ja existe um quarto com esse numero." << endl;
+        cout << "Erro: Já existe um quarto com esse número." << endl;
         return;
     }
-    cout << "Digite a quantidade de hospedes: ";
+    cout << "Digite a quantidade de hóspedes: ";
     cin >> novoQuarto.quatHospede;
-    cout << "Digite o valor da diaria: ";
+    cout << "Digite o valor da diária: ";
     cin >> novoQuarto.valorDiaria;
     cin.ignore();
 
