@@ -14,13 +14,20 @@ vector<Estadia> estadias;
 
 // Carrega todos os dados necessários
 void carregarDados() {
-    carregarClientes(clientes);
+    cout << "Carregando dados..." << endl;
+    //carregarClientes(clientes);
+    cout << "Clientes carregados..." << endl;
     carregarFuncionarios(funcionarios);
+    cout << "Funcionários carregados..." << endl;
     carregarQuartos(quartos);
+    cout << "Quartos carregados..." << endl;
     carregarEstadias(estadias);
+    cout << "Estadias carregadas..." << endl;
+    cout << "Dados carregados com sucesso!" << endl;
 }
 
 int main() {
+    cout    << "Bem vindo ao sistema de gerenciamento de estadias!" << endl;
     carregarDados();
     int opcao;
 
