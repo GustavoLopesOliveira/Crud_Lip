@@ -1,16 +1,29 @@
-#include "include/estadia.h"
-#include "include/funcionario.h"
-#include "include/cliente.h"
-#include "include/quarto.h"
+#include "estadia.h"
+#include "funcionario.h"
+#include "cliente.h"
+#include "quarto.h"
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
+vector<Cliente> clientes;
+vector<Funcionario> funcionarios;
+vector<Quarto> quartos;
+vector<Estadia> estadias;
 
-int main(){
+void carregarDados() {
+    carregarClientes(clientes);
+    carregarFuncionarios(funcionarios);
+    carregarQuartos(quartos);
+    carregarEstadias(estadias);
+}
+
+int main() {
+    carregarDados();
     int opcao;
     
-    do{
+    do {
         cout << "1 - Cadastrar Estadia" << endl;
         cout << "2 - Baixa Estadia" << endl;
         cout << "3 - Valor Mensal de Estadia" << endl;
@@ -23,33 +36,33 @@ int main(){
         cout << "0 - Sair" << endl;
         cout << "Digite a opção desejada: ";
         cin >> opcao;
-        switch(opcao){
+        switch(opcao) {
             case 1:
-                cadastrarEstadia();
+                cadastrarEstadia(estadias, clientes, funcionarios, quartos);
                 break;
             case 2:
-                baixaEstadia();
+                baixaEstadia(estadias);
                 break;
             case 3:
-                valorMesEstadia();
+                cout << "Valor mensal de estadia: " << valorMesEstadia(estadias) << endl;
                 break;
             case 4:
-                cadastrarFuncionario();
+                cadastrarFuncionario(funcionarios);
                 break;
             case 5:
-                pesquisaFuncionario();
+                pesquisaFuncionario(funcionarios);
                 break;
             case 6:
-                cadastrarCliente();
+                cadastrarCliente(clientes);
                 break;
             case 7:
-                pesquisaCliente();
+                pesquisaCliente(clientes);
                 break;
             case 8:
-                estadiasCliente();
+                estadiasCliente(clientes);
                 break;
             case 9:
-                cadastrarQuarto();
+                cadastrarQuarto(quartos);
                 break;
             case 0:
                 cout << "Saindo..." << endl;
@@ -57,7 +70,6 @@ int main(){
             default:
                 cout << "Opção inválida!" << endl;
         }
-    }while(opcao != 0);
+    } while(opcao != 0);
     return 0;
 }
-
