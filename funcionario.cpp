@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Verifica se um funcionário com o código especificado já existe
+// Verifica se um funcionario com o codigo especificado ja existe
 bool funcionarioExiste(const vector<Funcionario>& funcionarios, int codigo) {
     for (const auto& funcionario : funcionarios) {
         if (funcionario.codigo == codigo) {
@@ -16,7 +16,7 @@ bool funcionarioExiste(const vector<Funcionario>& funcionarios, int codigo) {
     return false;
 }
 
-// Carrega os funcionários a partir de um arquivo binário
+// Carrega os funcionarios a partir de um arquivo binario
 void carregarFuncionarios(vector<Funcionario>& funcionarios) {
     ifstream infile("funcionarios.bin", ios::binary);
     if (infile.is_open()) {
@@ -28,7 +28,7 @@ void carregarFuncionarios(vector<Funcionario>& funcionarios) {
     }
 }
 
-// Salva os funcionários em um arquivo binário
+// Salva os funcionarios em um arquivo binario
 void salvarFuncionarios(const vector<Funcionario>& funcionarios) {
     ofstream outfile("funcionarios.bin", ios::binary | ios::trunc);
     if (outfile.is_open()) {
@@ -39,46 +39,46 @@ void salvarFuncionarios(const vector<Funcionario>& funcionarios) {
     }
 }
 
-// Cadastra um novo funcionário
+// Cadastra um novo funcionario
 void cadastrarFuncionario(vector<Funcionario>& funcionarios) {
     Funcionario novoFuncionario;
-    cout << "Digite o código do funcionário: ";
+    cout << "Digite o codigo do funcionario: ";
     cin >> novoFuncionario.codigo;
     if (funcionarioExiste(funcionarios, novoFuncionario.codigo)) {
-        cout << "Erro: Já existe um funcionário com esse código." << endl;
+        cout << "Erro: Ja existe um funcionario com esse codigo." << endl;
         return;
     }
-    cout << "Digite o nome do funcionário: ";
+    cout << "Digite o nome do funcionario: ";
     cin.ignore();
     getline(cin, novoFuncionario.nome);
-    cout << "Digite o telefone do funcionário: ";
+    cout << "Digite o telefone do funcionario: ";
     cin >> novoFuncionario.telefone;
     cin.ignore();
-    cout << "Digite o cargo do funcionário: ";
+    cout << "Digite o cargo do funcionario: ";
     getline(cin, novoFuncionario.cargo);
-    cout << "Digite o salário do funcionário: ";
+    cout << "Digite o salario do funcionario: ";
     cin >> novoFuncionario.salario;
     cin.ignore();
 
     funcionarios.push_back(novoFuncionario);
     salvarFuncionarios(funcionarios);
-    cout << "Funcionário cadastrado com sucesso!" << endl;
+    cout << "Funcionario cadastrado com sucesso!" << endl;
 }
 
-// Pesquisa um funcionário pelo código
+// Pesquisa um funcionario pelo codigo
 void pesquisaFuncionario(const vector<Funcionario>& funcionarios) {
     int codigo;
-    cout << "Digite o código do funcionário: ";
+    cout << "Digite o codigo do funcionario: ";
     cin >> codigo;
     for (const auto& funcionario : funcionarios) {
         if (funcionario.codigo == codigo) {
-            cout << "Funcionário encontrado: " << endl;
+            cout << "Funcionario encontrado: " << endl;
             cout << "Nome: " << funcionario.nome << endl;
             cout << "Telefone: " << funcionario.telefone << endl;
             cout << "Cargo: " << funcionario.cargo << endl;
-            cout << "Salário: " << funcionario.salario << endl;
+            cout << "Salario: " << funcionario.salario << endl;
             return;
         }
     }
-    cout << "Funcionário não encontrado." << endl;
+    cout << "Funcionario nao encontrado." << endl;
 }
