@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// Verifica se um quarto com o número especificado já existe
 bool quartoExiste(const vector<Quarto>& quartos, int numero) {
     for (const auto& quarto : quartos) {
         if (quarto.numeroQuarto == numero) {
@@ -15,6 +16,7 @@ bool quartoExiste(const vector<Quarto>& quartos, int numero) {
     return false;
 }
 
+// Carrega os quartos a partir de um arquivo binário
 void carregarQuartos(vector<Quarto>& quartos) {
     ifstream infile("quartos.bin", ios::binary);
     if (infile.is_open()) {
@@ -26,6 +28,7 @@ void carregarQuartos(vector<Quarto>& quartos) {
     }
 }
 
+// Salva os quartos em um arquivo binário
 void salvarQuartos(const vector<Quarto>& quartos) {
     ofstream outfile("quartos.bin", ios::binary | ios::trunc);
     if (outfile.is_open()) {
@@ -36,6 +39,7 @@ void salvarQuartos(const vector<Quarto>& quartos) {
     }
 }
 
+// Cadastra um novo quarto
 void cadastrarQuarto(vector<Quarto>& quartos) {
     Quarto novoQuarto;
     cout << "Digite o número do quarto: ";

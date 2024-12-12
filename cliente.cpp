@@ -81,6 +81,9 @@ void estadiasCliente(const vector<Cliente>& clientes) {
     for (const auto& cliente : clientes) {
         if (cliente.codigo == codigo) {
             cout << "Cliente encontrado: " << cliente.nome << endl;
+            // Aqui você deve acessar as estadias do cliente
+            // Supondo que você tenha uma função para listar estadias
+            // listarEstadiasCliente(cliente.codigo);
             return;
         }
     }

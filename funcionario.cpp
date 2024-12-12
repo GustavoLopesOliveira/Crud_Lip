@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// Verifica se um funcionário com o código especificado já existe
 bool funcionarioExiste(const vector<Funcionario>& funcionarios, int codigo) {
     for (const auto& funcionario : funcionarios) {
         if (funcionario.codigo == codigo) {
@@ -15,6 +16,7 @@ bool funcionarioExiste(const vector<Funcionario>& funcionarios, int codigo) {
     return false;
 }
 
+// Carrega os funcionários a partir de um arquivo binário
 void carregarFuncionarios(vector<Funcionario>& funcionarios) {
     ifstream infile("funcionarios.bin", ios::binary);
     if (infile.is_open()) {
@@ -26,6 +28,7 @@ void carregarFuncionarios(vector<Funcionario>& funcionarios) {
     }
 }
 
+// Salva os funcionários em um arquivo binário
 void salvarFuncionarios(const vector<Funcionario>& funcionarios) {
     ofstream outfile("funcionarios.bin", ios::binary | ios::trunc);
     if (outfile.is_open()) {
@@ -36,6 +39,7 @@ void salvarFuncionarios(const vector<Funcionario>& funcionarios) {
     }
 }
 
+// Cadastra um novo funcionário
 void cadastrarFuncionario(vector<Funcionario>& funcionarios) {
     Funcionario novoFuncionario;
     cout << "Digite o código do funcionário: ";
@@ -61,6 +65,7 @@ void cadastrarFuncionario(vector<Funcionario>& funcionarios) {
     cout << "Funcionário cadastrado com sucesso!" << endl;
 }
 
+// Pesquisa um funcionário pelo código
 void pesquisaFuncionario(const vector<Funcionario>& funcionarios) {
     int codigo;
     cout << "Digite o código do funcionário: ";

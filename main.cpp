@@ -12,6 +12,7 @@ vector<Funcionario> funcionarios;
 vector<Quarto> quartos;
 vector<Estadia> estadias;
 
+// Carrega todos os dados necessários
 void carregarDados() {
     carregarClientes(clientes);
     carregarFuncionarios(funcionarios);
@@ -34,7 +35,7 @@ int main() {
         cout << "8 - Estadias do Cliente" << endl;
         cout << "9 - Cadastrar Quarto" << endl;
         cout << "0 - Sair" << endl;
-        cout << "Digite a opção desejada: ";
+        cout << "Digite a opcao desejada: ";
         cin >> opcao;
         switch(opcao) {
             case 1:

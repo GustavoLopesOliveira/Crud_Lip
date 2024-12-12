@@ -10,6 +10,7 @@
 
 using namespace std;
 
+// Verifica se há um quarto disponível para a quantidade de hóspedes especificada
 bool quartoDisponivel(const vector<Quarto>& quartos, int quatHospede, int& numeroQuarto) {
     for (const auto& quarto : quartos) {
         if (quarto.quatHospede >= quatHospede) {
@@ -20,6 +21,7 @@ bool quartoDisponivel(const vector<Quarto>& quartos, int quatHospede, int& numer
     return false;
 }
 
+// Carrega as estadias a partir de um arquivo binário
 void carregarEstadias(vector<Estadia>& estadias) {
     ifstream infile("estadias.bin", ios::binary);
     if (infile.is_open()) {
@@ -31,6 +33,7 @@ void carregarEstadias(vector<Estadia>& estadias) {
     }
 }
 
+// Salva as estadias em um arquivo binário
 void salvarEstadias(const vector<Estadia>& estadias) {
     ofstream outfile("estadias.bin", ios::binary | ios::trunc);
     if (outfile.is_open()) {
@@ -41,6 +44,7 @@ void salvarEstadias(const vector<Estadia>& estadias) {
     }
 }
 
+// Cadastra uma nova estadia
 void cadastrarEstadia(vector<Estadia>& estadias, const vector<Cliente>& clientes, const vector<Funcionario>& funcionarios, const vector<Quarto>& quartos) {
     Estadia novaEstadia;
     cout << "Digite o código do cliente: ";
@@ -67,8 +71,6 @@ void cadastrarEstadia(vector<Estadia>& estadias, const vector<Cliente>& clientes
         return;
     }
 
-    // Calcular quantidade de diárias
-    // Supondo que as datas estão no formato dd/mm/aaaa
     struct tm entrada = {0}, saida = {0};
     sscanf(novaEstadia.dataEntrada.c_str(), "%d/%d/%d", &entrada.tm_mday, &entrada.tm_mon, &entrada.tm_year);
     sscanf(novaEstadia.dataSaida.c_str(), "%d/%d/%d", &saida.tm_mday, &saida.tm_mon, &saida.tm_year);
@@ -85,6 +87,7 @@ void cadastrarEstadia(vector<Estadia>& estadias, const vector<Cliente>& clientes
     cout << "Estadia cadastrada com sucesso!" << endl;
 }
 
+// Calcula o total a ser pago pelo cliente
 void baixaEstadia(const vector<Estadia>& estadias) {
     int codigoCliente;
     cout << "Digite o código do cliente: ";
@@ -98,6 +101,7 @@ void baixaEstadia(const vector<Estadia>& estadias) {
     cout << "Total a ser pago pelo cliente: " << total << endl;
 }
 
+// Calcula o valor total das estadias no mês
 float valorMesEstadia(const vector<Estadia>& estadias) {
     float valorTotal = 0.0;
     for (const auto& estadia : estadias) {
