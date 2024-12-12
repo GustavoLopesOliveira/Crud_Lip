@@ -1,6 +1,10 @@
 #include "cliente.h"
 #include <vector>
 #include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <cstdio>
+#include <cstdlib>
 #include <string>
 
 using namespace std;
@@ -8,6 +12,7 @@ using namespace std;
 vector<Cliente> clientes;
 
 void cadastrarCliente() {
+    // Cria um novo cliente
     Cliente novoCliente;
     cout << "Digite o código do cliente: ";
     cin >> novoCliente.codigo;
@@ -20,17 +25,23 @@ void cadastrarCliente() {
     cin >> novoCliente.telefone;
     cin.ignore();
 
-    clientes.push_back(novoCliente);
-    cout << "Cliente cadastrado com sucesso!" << endl;
-}
-
-void listarClientes() {
-    cout << "Lista de Clientes:" << endl;
-    for (int i = 0; i < clientes.size(); ++i) {
-        cout << "Código: " << clientes[i].codigo << endl;
-        cout << "Nome: " << clientes[i].nome << endl;
-        cout << "Endereço: " << clientes[i].endereco << endl;
-        cout << "Telefone: " << clientes[i].telefone << endl;
-        cout << "-------------------------" << endl;
+    // Adiciona o cliente no .bin
+    FILE *arquivo = fopen("clientes.bin", "ab");
+    if (arquivo == nullptr) {
+        cerr << "Erro ao abrir o arquivo!" << endl;
+        return;
     }
+
+    fwrite(&novoCliente.codigo, sizeof(novoCliente.codigo), 1, arquivo);
+    size_t nomeLength = novoCliente.nome.size();
+    fwrite(&nomeLength, sizeof(nomeLength), 1, arquivo);
+    fwrite(novoCliente.nome.c_str(), sizeof(char), nomeLength, arquivo);
+    size_t enderecoLength = novoCliente.endereco.size();
+    fwrite(&enderecoLength, sizeof(enderecoLength), 1, arquivo);
+    fwrite(novoCliente.endereco.c_str(), sizeof(char), enderecoLength, arquivo);
+    fwrite(&novoCliente.telefone, sizeof(novoCliente.telefone), 1, arquivo);
+
+    fclose(arquivo);
+
+    cout << "Cliente cadastrado com sucesso!" << endl;
 }
