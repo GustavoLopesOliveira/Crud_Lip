@@ -82,6 +82,8 @@ void cadastrarEstadia(vector<Estadia>& estadias, const vector<Cliente>& clientes
     time_t saidaTime = mktime(&saida);
     novaEstadia.quantDiaria = difftime(saidaTime, entradaTime) / (60 * 60 * 24);
 
+    novaEstadia.valorPago = novaEstadia.quantDiaria * quatHospede * VALOR_DIARIA_POR_PESSOA;
+
     estadias.push_back(novaEstadia);
     salvarEstadias(estadias);
     cout << "Estadia cadastrada com sucesso!" << endl;
@@ -95,7 +97,7 @@ void baixaEstadia(const vector<Estadia>& estadias) {
     float total = 0.0;
     for (const auto& estadia : estadias) {
         if (estadia.codigoCliente == codigoCliente) {
-            total += estadia.quantDiaria * estadia.valorPago;
+            total += estadia.valorPago;
         }
     }
     cout << "Total a ser pago pelo cliente: " << total << endl;
@@ -105,7 +107,7 @@ void baixaEstadia(const vector<Estadia>& estadias) {
 float valorMesEstadia(const vector<Estadia>& estadias) {
     float valorTotal = 0.0;
     for (const auto& estadia : estadias) {
-        valorTotal += estadia.quantDiaria * estadia.valorPago;
+        valorTotal += estadia.valorPago;
     }
     return valorTotal;
 }

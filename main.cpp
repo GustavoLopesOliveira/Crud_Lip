@@ -35,7 +35,7 @@ int main() {
         cout << "8 - Estadias do Cliente" << endl;
         cout << "9 - Cadastrar Quarto" << endl;
         cout << "0 - Sair" << endl;
-        cout << "Digite a opcao desejada: ";
+        cout << "Digite a opção desejada: ";
         cin >> opcao;
         switch(opcao) {
             case 1:

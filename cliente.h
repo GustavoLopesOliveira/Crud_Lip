@@ -6,7 +6,6 @@
 #include <vector>
 using namespace std;
 
-// Definição da classe Cliente
 class Cliente {
 public:
     int codigo;
@@ -15,7 +14,6 @@ public:
     int telefone;
 };
 
-// Protótipos das funções
 void cadastrarCliente(vector<Cliente>& clientes);
 void pesquisaCliente(const vector<Cliente>& clientes);
 void estadiasCliente(const vector<Cliente>& clientes);
