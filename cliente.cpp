@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// Verifica se um cliente com o código especificado já existe
 bool clienteExiste(const vector<Cliente>& clientes, int codigo) {
     for (const auto& cliente : clientes) {
         if (cliente.codigo == codigo) {
@@ -15,6 +16,7 @@ bool clienteExiste(const vector<Cliente>& clientes, int codigo) {
     return false;
 }
 
+// Carrega os clientes a partir de um arquivo binário
 void carregarClientes(vector<Cliente>& clientes) {
     ifstream infile("clientes.bin", ios::binary);
     if (infile.is_open()) {
@@ -26,6 +28,7 @@ void carregarClientes(vector<Cliente>& clientes) {
     }
 }
 
+// Salva os clientes em um arquivo binário
 void salvarClientes(const vector<Cliente>& clientes) {
     ofstream outfile("clientes.bin", ios::binary | ios::trunc);
     if (outfile.is_open()) {
@@ -36,6 +39,7 @@ void salvarClientes(const vector<Cliente>& clientes) {
     }
 }
 
+// Cadastra um novo cliente
 void cadastrarCliente(vector<Cliente>& clientes) {
     Cliente novoCliente;
     cout << "Digite o código do cliente: ";
@@ -58,6 +62,7 @@ void cadastrarCliente(vector<Cliente>& clientes) {
     cout << "Cliente cadastrado com sucesso!" << endl;
 }
 
+// Pesquisa um cliente pelo código
 void pesquisaCliente(const vector<Cliente>& clientes) {
     int codigo;
     cout << "Digite o código do cliente: ";
@@ -74,6 +79,7 @@ void pesquisaCliente(const vector<Cliente>& clientes) {
     cout << "Cliente não encontrado." << endl;
 }
 
+// Lista as estadias de um cliente pelo código
 void estadiasCliente(const vector<Cliente>& clientes) {
     int codigo;
     cout << "Digite o código do cliente: ";
@@ -81,9 +87,6 @@ void estadiasCliente(const vector<Cliente>& clientes) {
     for (const auto& cliente : clientes) {
         if (cliente.codigo == codigo) {
             cout << "Cliente encontrado: " << cliente.nome << endl;
-            // Aqui você deve acessar as estadias do cliente
-            // Supondo que você tenha uma função para listar estadias
-            // listarEstadiasCliente(cliente.codigo);
             return;
         }
     }
