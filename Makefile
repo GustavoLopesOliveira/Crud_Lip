@@ -30,6 +30,7 @@ clean:
 	if exist *.o del /Q *.o
 	if exist $(EXECUTABLE) del /Q $(EXECUTABLE)
 	if exist $(BIN_EXECUTABLE) del /Q $(BIN_EXECUTABLE)
+	if exist clientes.bin del /Q clientes.bin
 
 # Execução do programa
 run: $(EXECUTABLE)
