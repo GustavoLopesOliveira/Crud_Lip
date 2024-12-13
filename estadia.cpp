@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// Verifica se há um quarto disponível para a quantidade de hóspedes especificada
+// Verifica se ha um quarto disponivel para a quantidade de hospedes especificada
 bool quartoDisponivel(const vector<Quarto>& quartos, int quatHospede, int& numeroQuarto) {
     for (const auto& quarto : quartos) {
         if (quarto.quatHospede >= quatHospede) {
@@ -21,7 +21,7 @@ bool quartoDisponivel(const vector<Quarto>& quartos, int quatHospede, int& numer
     return false;
 }
 
-// Carrega as estadias a partir de um arquivo binário
+// Carrega as estadias a partir de um arquivo binario
 void carregarEstadias(vector<Estadia>& estadias) {
     ifstream infile("estadias.bin", ios::binary);
     if (infile.is_open()) {
@@ -33,7 +33,7 @@ void carregarEstadias(vector<Estadia>& estadias) {
     }
 }
 
-// Salva as estadias em um arquivo binário
+// Salva as estadias em um arquivo binario
 void salvarEstadias(const vector<Estadia>& estadias) {
     ofstream outfile("estadias.bin", ios::binary | ios::trunc);
     if (outfile.is_open()) {
@@ -47,27 +47,27 @@ void salvarEstadias(const vector<Estadia>& estadias) {
 // Cadastra uma nova estadia
 void cadastrarEstadia(vector<Estadia>& estadias, const vector<Cliente>& clientes, const vector<Funcionario>& funcionarios, const vector<Quarto>& quartos) {
     Estadia novaEstadia;
-    cout << "Digite o código do cliente: ";
+    cout << "Digite o codigo do cliente: ";
     cin >> novaEstadia.codigoCliente;
     if (!clienteExiste(clientes, novaEstadia.codigoCliente)) {
-        cout << "Erro: Cliente não encontrado." << endl;
+        cout << "Erro: Cliente nao encontrado." << endl;
         return;
     }
-    cout << "Digite a quantidade de hóspedes: ";
+    cout << "Digite a quantidade de hospedes: ";
     int quatHospede;
     cin >> quatHospede;
     if (!quartoDisponivel(quartos, quatHospede, novaEstadia.numeroQuarto)) {
-        cout << "Erro: Não há quartos disponíveis para essa quantidade de hóspedes." << endl;
+        cout << "Erro: Nao ha quartos disponiveis para essa quantidade de hospedes." << endl;
         return;
     }
     cout << "Digite a data de entrada (dd/mm/aaaa): ";
     cin >> novaEstadia.dataEntrada;
-    cout << "Digite a data de saída (dd/mm/aaaa): ";
+    cout << "Digite a data de saida (dd/mm/aaaa): ";
     cin >> novaEstadia.dataSaida;
-    cout << "Digite o código do funcionário que está fazendo a reserva: ";
+    cout << "Digite o codigo do funcionario que esta fazendo a reserva: ";
     cin >> novaEstadia.codigoFuncionario;
     if (!funcionarioExiste(funcionarios, novaEstadia.codigoFuncionario)) {
-        cout << "Erro: Funcionário não encontrado." << endl;
+        cout << "Erro: Funcionario nao encontrado." << endl;
         return;
     }
 
@@ -92,7 +92,7 @@ void cadastrarEstadia(vector<Estadia>& estadias, const vector<Cliente>& clientes
 // Calcula o total a ser pago pelo cliente
 void baixaEstadia(const vector<Estadia>& estadias) {
     int codigoCliente;
-    cout << "Digite o código do cliente: ";
+    cout << "Digite o codigo do cliente: ";
     cin >> codigoCliente;
     float total = 0.0;
     for (const auto& estadia : estadias) {
@@ -103,7 +103,7 @@ void baixaEstadia(const vector<Estadia>& estadias) {
     cout << "Total a ser pago pelo cliente: " << total << endl;
 }
 
-// Calcula o valor total das estadias no mês
+// Calcula o valor total das estadias no mes
 float valorMesEstadia(const vector<Estadia>& estadias) {
     float valorTotal = 0.0;
     for (const auto& estadia : estadias) {

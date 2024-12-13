@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Verifica se um cliente com o código especificado já existe
+// Verifica se um cliente com o codigo especificado ja existe
 bool clienteExiste(const vector<Cliente>& clientes, int codigo) {
     for (const auto& cliente : clientes) {
         if (cliente.codigo == codigo) {
@@ -16,7 +16,7 @@ bool clienteExiste(const vector<Cliente>& clientes, int codigo) {
     return false;
 }
 
-// Carrega os clientes a partir de um arquivo binário
+// Carrega os clientes a partir de um arquivo binario
 void carregarClientes(vector<Cliente>& clientes) {
     ifstream infile("clientes.bin", ios::binary);
     if (!infile) {
@@ -32,7 +32,7 @@ void carregarClientes(vector<Cliente>& clientes) {
     infile.close();
 }
 
-// Salva os clientes em um arquivo binário
+// Salva os clientes em um arquivo binario
 void salvarClientes(const vector<Cliente>& clientes) {
     ofstream outfile("clientes.bin", ios::binary | ios::trunc);
     if (outfile.is_open()) {
@@ -46,16 +46,16 @@ void salvarClientes(const vector<Cliente>& clientes) {
 // Cadastra um novo cliente
 void cadastrarCliente(vector<Cliente>& clientes) {
     Cliente novoCliente;
-    cout << "Digite o código do cliente: ";
+    cout << "Digite o codigo do cliente: ";
     cin >> novoCliente.codigo;
     if (clienteExiste(clientes, novoCliente.codigo)) {
-        cout << "Erro: Já existe um cliente com esse código." << endl;
+        cout << "Erro: Ja existe um cliente com esse codigo." << endl;
         return;
     }
     cout << "Digite o nome do cliente: ";
     cin.ignore();
     getline(cin, novoCliente.nome);
-    cout << "Digite o endereço do cliente: ";
+    cout << "Digite o endereco do cliente: ";
     getline(cin, novoCliente.endereco);
     cout << "Digite o telefone do cliente: ";
     cin >> novoCliente.telefone;
@@ -66,27 +66,27 @@ void cadastrarCliente(vector<Cliente>& clientes) {
     cout << "Cliente cadastrado com sucesso!" << endl;
 }
 
-// Pesquisa um cliente pelo código
+// Pesquisa um cliente pelo codigo
 void pesquisaCliente(const vector<Cliente>& clientes) {
     int codigo;
-    cout << "Digite o código do cliente: ";
+    cout << "Digite o codigo do cliente: ";
     cin >> codigo;
     for (const auto& cliente : clientes) {
         if (cliente.codigo == codigo) {
             cout << "Cliente encontrado: " << endl;
             cout << "Nome: " << cliente.nome << endl;
-            cout << "Endereço: " << cliente.endereco << endl;
+            cout << "Endereco: " << cliente.endereco << endl;
             cout << "Telefone: " << cliente.telefone << endl;
             return;
         }
     }
-    cout << "Cliente não encontrado." << endl;
+    cout << "Cliente nao encontrado." << endl;
 }
 
-// Lista as estadias de um cliente pelo código
+// Lista as estadias de um cliente pelo codigo
 void estadiasCliente(const vector<Cliente>& clientes) {
     int codigo;
-    cout << "Digite o código do cliente: ";
+    cout << "Digite o codigo do cliente: ";
     cin >> codigo;
     for (const auto& cliente : clientes) {
         if (cliente.codigo == codigo) {
@@ -94,5 +94,5 @@ void estadiasCliente(const vector<Cliente>& clientes) {
             return;
         }
     }
-    cout << "Cliente não encontrado." << endl;
+    cout << "Cliente nao encontrado." << endl;
 }

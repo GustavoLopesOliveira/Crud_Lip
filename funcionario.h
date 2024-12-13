@@ -6,7 +6,7 @@
 #include <vector>
 using namespace std;
 
-// Definição da classe Funcionario
+// Definicao da classe Funcionario
 class Funcionario {
 public:
     int codigo;
@@ -16,7 +16,7 @@ public:
     float salario;
 };
 
-// Protótipos das funções
+// Prototipos das funcoes
 void cadastrarFuncionario(vector<Funcionario>& funcionarios);
 void pesquisaFuncionario(const vector<Funcionario>& funcionarios);
 void carregarFuncionarios(vector<Funcionario>& funcionarios);

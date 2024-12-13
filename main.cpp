@@ -12,13 +12,13 @@ vector<Funcionario> funcionarios;
 vector<Quarto> quartos;
 vector<Estadia> estadias;
 
-// Carrega todos os dados necessários
+// Carrega todos os dados necessarios
 void carregarDados() {
     cout << "Carregando dados..." << endl;
-    //carregarClientes(clientes);
+    carregarClientes(clientes);
     cout << "Clientes carregados..." << endl;
     carregarFuncionarios(funcionarios);
-    cout << "Funcionários carregados..." << endl;
+    cout << "Funcionarios carregados..." << endl;
     carregarQuartos(quartos);
     cout << "Quartos carregados..." << endl;
     carregarEstadias(estadias);
@@ -27,10 +27,8 @@ void carregarDados() {
 }
 
 int main() {
-    cout    << "Bem vindo ao sistema de gerenciamento de estadias!" << endl;
     carregarDados();
     int opcao;
-
     do {
         cout << "1 - Cadastrar Estadia" << endl;
         cout << "2 - Baixa Estadia" << endl;
@@ -42,9 +40,8 @@ int main() {
         cout << "8 - Estadias do Cliente" << endl;
         cout << "9 - Cadastrar Quarto" << endl;
         cout << "0 - Sair" << endl;
-        cout << "Digite a opção desejada: ";
+        cout << "Digite a opcao desejada: ";
         cin >> opcao;
-
         switch (opcao) {
             case 1:
                 cadastrarEstadia(estadias, clientes, funcionarios, quartos);
@@ -59,7 +56,7 @@ int main() {
                 cadastrarFuncionario(funcionarios);
                 break;
             case 5:
-                // Implementar pesquisaFuncionario
+                pesquisaFuncionario(funcionarios);
                 break;
             case 6:
                 cadastrarCliente(clientes);
@@ -77,10 +74,8 @@ int main() {
                 cout << "Saindo..." << endl;
                 break;
             default:
-                cout << "Opção inválida!" << endl;
-                break;
+                cout << "Opcao invalida!" << endl;
         }
     } while (opcao != 0);
-
     return 0;
 }

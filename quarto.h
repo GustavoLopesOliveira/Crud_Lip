@@ -6,7 +6,7 @@
 #include <vector>
 using namespace std;
 
-// Definição da classe Quarto
+// Definicao da classe Quarto
 class Quarto {
 public:
     int numeroQuarto;
@@ -14,7 +14,7 @@ public:
     int valorDiaria;
 };
 
-// Protótipos das funções
+// Prototipos das funcoes
 void cadastrarQuarto(vector<Quarto>& quartos);
 void carregarQuartos(vector<Quarto>& quartos);
 void salvarQuartos(const vector<Quarto>& quartos);
