@@ -48,13 +48,27 @@ void cadastrarQuarto(vector<Quarto>& quartos) {
         cout << "Erro: Ja existe um quarto com esse numero." << endl;
         return;
     }
-    cout << "Digite a quantidade de hospedes: ";
+    cout << "Digite a quantidade de hospedes (max 3): ";
     cin >> novoQuarto.quatHospede;
-    cout << "Digite o valor da diaria: ";
-    cin >> novoQuarto.valorDiaria;
+    if (novoQuarto.quatHospede > 3) {
+        cout << "Erro: A quantidade maxima de hospedes por quarto e 3." << endl;
+        return;
+    }
+    novoQuarto.valorDiaria = 400.0; // Valor fixo da diária
     cin.ignore();
 
     quartos.push_back(novoQuarto);
     salvarQuartos(quartos);
     cout << "Quarto cadastrado com sucesso!" << endl;
+}
+
+// Verifica se ha um quarto disponivel para a quantidade de hospedes especificada
+bool quartoDisponivel(const vector<Quarto>& quartos, int quatHospede, int& numeroQuarto) {
+    for (const auto& quarto : quartos) {
+        if (quarto.quatHospede >= quatHospede) {
+            numeroQuarto = quarto.numeroQuarto;
+            return true;
+        }
+    }
+    return false;
 }

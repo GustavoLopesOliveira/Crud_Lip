@@ -23,7 +23,7 @@ public:
     float valorPago;
 };
 
-const float VALOR_DIARIA_POR_PESSOA = 350.0;
+const float VALOR_DIARIA_POR_PESSOA = 400.0; // Atualizado para R$400
 
 // Protótipos das funções
 void cadastrarEstadia(vector<Estadia>& estadias, const vector<Cliente>& clientes, const vector<Funcionario>& funcionarios, const vector<Quarto>& quartos);

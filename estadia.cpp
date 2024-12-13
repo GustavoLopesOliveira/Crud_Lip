@@ -10,17 +10,6 @@
 
 using namespace std;
 
-// Verifica se ha um quarto disponivel para a quantidade de hospedes especificada
-bool quartoDisponivel(const vector<Quarto>& quartos, int quatHospede, int& numeroQuarto) {
-    for (const auto& quarto : quartos) {
-        if (quarto.quatHospede >= quatHospede) {
-            numeroQuarto = quarto.numeroQuarto;
-            return true;
-        }
-    }
-    return false;
-}
-
 // Carrega as estadias a partir de um arquivo binario
 void carregarEstadias(vector<Estadia>& estadias) {
     ifstream infile("estadias.bin", ios::binary);
@@ -49,13 +38,13 @@ void cadastrarEstadia(vector<Estadia>& estadias, const vector<Cliente>& clientes
     Estadia novaEstadia;
     cout << "Digite o codigo do cliente: ";
     cin >> novaEstadia.codigoCliente;
-    if (!clienteExiste(clientes, novaEstadia.codigoCliente)) {
-        cout << "Erro: Cliente nao encontrado." << endl;
-        return;
-    }
     cout << "Digite a quantidade de hospedes: ";
     int quatHospede;
     cin >> quatHospede;
+    if (quatHospede > 3) {
+        cout << "Erro: A quantidade maxima de hospedes por quarto e 3." << endl;
+        return;
+    }
     if (!quartoDisponivel(quartos, quatHospede, novaEstadia.numeroQuarto)) {
         cout << "Erro: Nao ha quartos disponiveis para essa quantidade de hospedes." << endl;
         return;

@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdio> // Para a função remove
+
 using namespace std;
 
 vector<Cliente> clientes;
@@ -16,14 +18,29 @@ vector<Estadia> estadias;
 void carregarDados() {
     cout << "Carregando dados..." << endl;
     carregarClientes(clientes);
-    cout << "Clientes carregados..." << endl;
+    cout << "Clientes carregados: " << clientes.size() << endl;
     carregarFuncionarios(funcionarios);
-    cout << "Funcionarios carregados..." << endl;
+    cout << "Funcionarios carregados: " << funcionarios.size() << endl;
     carregarQuartos(quartos);
-    cout << "Quartos carregados..." << endl;
+    cout << "Quartos carregados: " << quartos.size() << endl;
     carregarEstadias(estadias);
-    cout << "Estadias carregadas..." << endl;
+    cout << "Estadias carregadas: " << estadias.size() << endl;
     cout << "Dados carregados com sucesso!" << endl;
+}
+
+// Limpa todos os dados
+void limparDados(vector<Cliente>& clientes, vector<Funcionario>& funcionarios, vector<Quarto>& quartos, vector<Estadia>& estadias) {
+    clientes.clear();
+    funcionarios.clear();
+    quartos.clear();
+    estadias.clear();
+
+    remove("clientes.bin");
+    remove("funcionarios.bin");
+    remove("quartos.bin");
+    remove("estadias.bin");
+
+    cout << "Todos os dados foram limpos!" << endl;
 }
 
 int main() {
@@ -39,6 +56,7 @@ int main() {
         cout << "7 - Pesquisar Cliente" << endl;
         cout << "8 - Estadias do Cliente" << endl;
         cout << "9 - Cadastrar Quarto" << endl;
+        cout << "10 - Limpar todos os dados" << endl;
         cout << "0 - Sair" << endl;
         cout << "Digite a opcao desejada: ";
         cin >> opcao;
@@ -69,6 +87,9 @@ int main() {
                 break;
             case 9:
                 cadastrarQuarto(quartos);
+                break;
+            case 10:
+                limparDados(clientes, funcionarios, quartos, estadias);
                 break;
             case 0:
                 cout << "Saindo..." << endl;

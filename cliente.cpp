@@ -30,6 +30,7 @@ void carregarClientes(vector<Cliente>& clientes) {
     }
 
     infile.close();
+    cout << "Clientes carregados: " << clientes.size() << endl;
 }
 
 // Salva os clientes em um arquivo binario
