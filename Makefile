@@ -9,22 +9,27 @@ BIN_DIR = bin
 
 # Arquivos
 SOURCES = main.cpp cliente.cpp funcionario.cpp quarto.cpp estadia.cpp
-OBJECTS = $(SOURCES:.cpp=.o)
+OBJECTS = $(SOURCES:%.cpp=$(OBJ_DIR)/%.o)
 EXECUTABLE = programa.exe
 
 # Flags de compilação
-CXXFLAGS = -I$(INCLUDE_DIR) -std=c++11
+CXXFLAGS = -I$(INCLUDE_DIR) -std=c++11 -mconsole
 
 # Regras
-all: $(EXECUTABLE)
+all: $(BIN_DIR)/$(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CXX) $(OBJECTS) -o $@
+$(BIN_DIR)/$(EXECUTABLE): $(OBJECTS)
+	if not exist $(BIN_DIR) mkdir $(BIN_DIR)
+	$(CXX) $(OBJECTS) -o $(BIN_DIR)/$(EXECUTABLE)
 
-%.o: %.cpp
+$(OBJ_DIR)/%.o: %.cpp
+	if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	del /Q $(OBJECTS) $(EXECUTABLE)
+	del /Q $(OBJ_DIR)\*.o $(BIN_DIR)\$(EXECUTABLE)
 
-.PHONY: all clean
+run: $(BIN_DIR)/$(EXECUTABLE)
+	$(BIN_DIR)/$(EXECUTABLE)
+
+.PHONY: all clean run

@@ -19,6 +19,6 @@ void pesquisaCliente(const vector<Cliente>& clientes);
 void estadiasCliente(const vector<Cliente>& clientes);
 void carregarClientes(vector<Cliente>& clientes);
 void salvarClientes(const vector<Cliente>& clientes);
-bool clienteExiste(const vector<Cliente>& clientes, int codigo);
+bool clienteExiste(const vector<Cliente>& clientes, int codigo); // Declaração da função
 
 #endif
