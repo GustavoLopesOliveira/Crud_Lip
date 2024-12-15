@@ -42,6 +42,8 @@ void salvarClientes(const vector<Cliente>& clientes) {
             outfile.write(reinterpret_cast<const char*>(&cliente), sizeof(Cliente));
         }
         outfile.close();
+    } else {
+        cerr << "Erro ao abrir o arquivo de clientes para escrita." << endl;
     }
 }
 
@@ -60,8 +62,7 @@ void cadastrarCliente(vector<Cliente>& clientes) {
     cout << "Digite o endereco do cliente: ";
     getline(cin, novoCliente.endereco);
     cout << "Digite o telefone do cliente: ";
-    cin >> novoCliente.telefone;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpa o buffer de entrada
+    getline(cin, novoCliente.telefone);
 
     clientes.push_back(novoCliente);
     salvarClientes(clientes);

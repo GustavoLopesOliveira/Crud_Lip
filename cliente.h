@@ -4,21 +4,23 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
 using namespace std;
 
+// Definição da classe Cliente
 class Cliente {
 public:
     int codigo;
     string nome;
     string endereco;
-    int telefone;
+    string telefone;
 };
 
+// Protótipos das funções
+void carregarClientes(vector<Cliente>& clientes);
+void salvarClientes(const vector<Cliente>& clientes);
 void cadastrarCliente(vector<Cliente>& clientes);
 void pesquisaCliente(const vector<Cliente>& clientes);
 void estadiasCliente(const vector<Cliente>& clientes);
-void carregarClientes(vector<Cliente>& clientes);
-void salvarClientes(const vector<Cliente>& clientes);
-bool clienteExiste(const vector<Cliente>& clientes, int codigo);
 
 #endif

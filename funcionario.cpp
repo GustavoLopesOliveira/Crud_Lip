@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <limits>
 
 using namespace std;
 
@@ -48,17 +49,17 @@ void cadastrarFuncionario(vector<Funcionario>& funcionarios) {
         cout << "Erro: Ja existe um funcionario com esse codigo." << endl;
         return;
     }
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpa o buffer de entrada
     cout << "Digite o nome do funcionario: ";
-    cin.ignore();
     getline(cin, novoFuncionario.nome);
     cout << "Digite o telefone do funcionario: ";
     cin >> novoFuncionario.telefone;
-    cin.ignore();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpa o buffer de entrada
     cout << "Digite o cargo do funcionario: ";
     getline(cin, novoFuncionario.cargo);
     cout << "Digite o salario do funcionario: ";
     cin >> novoFuncionario.salario;
-    cin.ignore();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpa o buffer de entrada
 
     funcionarios.push_back(novoFuncionario);
     salvarFuncionarios(funcionarios);

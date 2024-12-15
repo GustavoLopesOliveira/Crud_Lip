@@ -33,8 +33,11 @@ clean:
 	if exist clientes.bin del /Q clientes.bin
 
 # Execução do programa
-run: $(EXECUTABLE)
+run: $(EXECUTABLE) clientes.bin
 	@echo "Running $(EXECUTABLE)..."
 	cmd /c $(EXECUTABLE) || echo "Execution failed with error code $$?"
+
+clientes.bin:
+	echo "" > clientes.bin
 
 .PHONY: all clean run
