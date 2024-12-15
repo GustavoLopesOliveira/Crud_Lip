@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <limits>
 
 using namespace std;
 
@@ -53,14 +54,14 @@ void cadastrarCliente(vector<Cliente>& clientes) {
         cout << "Erro: Ja existe um cliente com esse codigo." << endl;
         return;
     }
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpa o buffer de entrada
     cout << "Digite o nome do cliente: ";
-    cin.ignore();
     getline(cin, novoCliente.nome);
     cout << "Digite o endereco do cliente: ";
     getline(cin, novoCliente.endereco);
     cout << "Digite o telefone do cliente: ";
     cin >> novoCliente.telefone;
-    cin.ignore();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpa o buffer de entrada
 
     clientes.push_back(novoCliente);
     salvarClientes(clientes);

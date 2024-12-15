@@ -43,6 +43,20 @@ void limparDados(vector<Cliente>& clientes, vector<Funcionario>& funcionarios, v
     cout << "Todos os dados foram limpos!" << endl;
 }
 
+// Limpa todos os dados de funcionarios
+void limparFuncionarios(vector<Funcionario>& funcionarios) {
+    funcionarios.clear();
+    remove("funcionarios.bin");
+    cout << "Todos os funcionarios foram limpos!" << endl;
+}
+
+// Limpa todos os dados de clientes
+void limparClientes(vector<Cliente>& clientes) {
+    clientes.clear();
+    remove("clientes.bin");
+    cout << "Todos os clientes foram limpos!" << endl;
+}
+
 int main() {
     carregarDados();
     int opcao;
@@ -57,6 +71,8 @@ int main() {
         cout << "8 - Estadias do Cliente" << endl;
         cout << "9 - Cadastrar Quarto" << endl;
         cout << "10 - Limpar todos os dados" << endl;
+        cout << "11 - Limpar todos os funcionarios" << endl;
+        cout << "12 - Limpar todos os clientes" << endl;
         cout << "0 - Sair" << endl;
         cout << "Digite a opcao desejada: ";
         cin >> opcao;
@@ -90,6 +106,12 @@ int main() {
                 break;
             case 10:
                 limparDados(clientes, funcionarios, quartos, estadias);
+                break;
+            case 11:
+                limparFuncionarios(funcionarios);
+                break;
+            case 12:
+                limparClientes(clientes);
                 break;
             case 0:
                 cout << "Saindo..." << endl;
